@@ -1,11 +1,30 @@
-Invoice PDF Generation
-Previously, I used the wkhtmltopdf package to generate invoice PDFs. However, it was not user-friendly and consumed a high amount of CPU resources.
+# PDF Generation Using Go and Chromedp
 
-In my current project, I generate PDFs from HTML files and directly return them as a binary stream response, eliminating the need to store them on the server.
+## Overview
 
-Additionally, I have used this approach for various use cases, such as converting HTML-designed resumes into PDFs.
+This project provides a solution for generating PDFs from HTML files using `chromedp`, which leverages the Chrome engine for rendering. Unlike `wkhtmltopdf`, which is resource-intensive, this approach is more efficient and allows direct streaming of the PDF response without saving it on the server.
 
-How It Works
-chromedp operates using the Chrome engine.
-Google Chrome must be installed for it to function properly.
-The process involves rendering the HTML file in the Chrome engine and converting it into a PDF.
+## Use Cases
+
+- Generating invoice PDFs.
+- Converting HTML-designed resumes into PDFs.
+- Any other scenario where HTML needs to be rendered and exported as a PDF.
+
+## How It Works
+
+1. `chromedp` renders the given HTML file using the Chrome engine.
+2. The rendered page is then converted into a PDF.
+3. The PDF is streamed as a binary response, avoiding unnecessary file storage on the server.
+
+## Prerequisites
+
+- **Google Chrome** must be installed on the system.
+- Go modules should be properly configured.
+
+## Installation
+
+1. Install Google Chrome if not already installed.
+2. Install the required Go dependencies:
+
+   ```sh
+   go get -u github.com/chromedp/chromedp
